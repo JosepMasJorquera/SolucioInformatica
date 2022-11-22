@@ -1,25 +1,26 @@
 // Classe Botó
 
-class ButtonRedo {
+class ButtonText {
 
   // Propietats d'un botó:
-  float x, y, r;  // Posició i dimensions
+  float x, y, w, h, s;  // Posició i dimensions
   // Colors de contorn, farciment, actiu i desactiu
-  color fillColor, strokeColor;
+  color fillColor;
   color fillColorOver;
   String textBoto;  // Text
   boolean enabled;  // Abilitat / desabilitat
 
   // Mètode Constructor
-  ButtonRedo(String text, float x, float y, float r) {
+  ButtonText(String text, float x, float y, float w, float h, float s) {
     this.textBoto = text;
     this.x = x;
     this.y = y;
-    this.r = r;
+    this.w = w;
+    this.h = h;
+    this.s = s;
     this.enabled = true;
-    fillColor = colors[4];
-    fillColorOver = colors[2];
-    strokeColor = color(0);
+    fillColor = color(0);
+    fillColorOver = color(200);
   }
 
   // Setters
@@ -31,28 +32,26 @@ class ButtonRedo {
   // Dibuixa el botó
   void display() {
     pushStyle();
+    fill(255); noStroke();
+    rect(this.x, this.y, this.w, this.h);    // Rectangle del botó
+
     if (mouseOverButton()) {
       fill(fillColorOver);      // Color quan ratolí a sobre
     } else {
       fill(fillColor);          // Color actiu però ratolí fora
     }
-    stroke(strokeColor); 
-    strokeWeight(2);        //Color i gruixa del contorn
-    circle(this.x, this.y, this.r);    // Cercle botó
-
     // Text (color, alineació i mida)
-    fill(0); 
-    textAlign(CENTER); 
-    textSize(20);
-    text(textBoto, this.x, this.y+6);
+    textSize(this.s); 
+    textAlign(CENTER);
+    text(textBoto, this.x + this.w/2, this.y + this.h/2 + 15);
     popStyle();
   }
 
   // Indica si el cursor està sobre el botó
   boolean mouseOverButton() {
-    return (mouseX >= this.x-r/2) && 
-      (mouseX<=this.x + this.r/2) && 
-      (mouseY>= this.y-r/2) && 
-      (mouseY<= this.y + this.r/2);
+    return (mouseX >= this.x) && 
+      (mouseX<=this.x + this.w) && 
+      (mouseY>= this.y) && 
+      (mouseY<= this.y + this.h);
   }
 }
