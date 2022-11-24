@@ -19,15 +19,18 @@ class Button {
     this.h = h;
     this.b = b;
     this.enabled = true;
-    fillColor = colors[3];
-    fillColorOver = colors[2];
-    strokeColor = color(0);
+    fillColor = color(255);
+    fillColorOver = color(#EBEBEB);
   }
 
   // Setters
 
   void setEnabled(boolean b) {
     this.enabled = b;
+  }
+  
+  void setPosicio(int x){
+    this.x = x;
   }
 
   // Dibuixa el botó
@@ -39,7 +42,7 @@ class Button {
       fill(fillColor);          // Color actiu però ratolí fora
     }
     stroke(strokeColor); 
-    strokeWeight(2);        //Color i gruixa del contorn
+    strokeWeight(1);        //Color i gruixa del contorn
     rect(this.x, this.y, this.w, this.h, this.b);    // Rectangle del botó
 
     // Text (color, alineació i mida)

@@ -1,8 +1,9 @@
 void setup() {
   fullScreen();
-  setColors();
+  background(255);
+  setGUI();
 }
 
 void draw() {
-  pantallaInici();
+  canviarPantalla();
 }

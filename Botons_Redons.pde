@@ -17,8 +17,8 @@ class ButtonRedo {
     this.y = y;
     this.r = r;
     this.enabled = true;
-    fillColor = colors[4];
-    fillColorOver = colors[2];
+    fillColor = color(#8FC9F5);
+    fillColorOver = color(#43A4EF);
     strokeColor = color(0);
   }
 

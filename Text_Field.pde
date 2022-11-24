@@ -1,14 +1,15 @@
 // Component Camp de Text
 
 class TextField {
+
   // Propietats del camp de text
   int x, y, h, w, r;
 
   // Colors
   color bgColor = color(255);
-  color fgColor = color(0);
-  color selectedColor = color(100);
-  color borderColor = color(0);
+  color fgColor = color(0, 0, 0);
+  color selectedColor = color(230);
+  color borderColor = color(30, 30, 30);
   int borderWeight = 1;
 
   // Text del camp
@@ -29,7 +30,7 @@ class TextField {
 
   // Dibuixa el Camp de Text
   void display() {
-    pushStyle();
+    pushMatrix();
     if (selected) {
       fill(selectedColor);
     } else {
@@ -43,7 +44,7 @@ class TextField {
     fill(fgColor);
     textSize(textSize);
     text(text, x + 5, y + textSize);
-    popStyle();
+    popMatrix();
   }
 
   // Afegeix, lleva el text que es tecleja
@@ -84,10 +85,8 @@ class TextField {
 
   // Indica si el ratolí està sobre el camp de text
   boolean mouseOverTextField() {
-    if (mouseX >= this.x && mouseX <= this.x + this.w) {
-      if (mouseY >= this.y && mouseY <= this.y + this.h) {
+    if (mouseX >= this.x && mouseX <= this.x + this.w && mouseY >= this.y && mouseY <= this.y + this.h) {
         return true;
-      }
     }
     return false;
   }
@@ -96,9 +95,11 @@ class TextField {
   // Deselecciona el camp de text si pitjam a fora
   void isPressed() {
     if (mouseOverTextField()) {
-      selected = true;
+      println("OVER");
+      this.selected = true;
     } else {
-      selected = false;
+      println("NOT OVER");
+      this.selected = false;
     }
   }
 }

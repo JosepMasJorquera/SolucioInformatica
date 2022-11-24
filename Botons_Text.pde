@@ -20,7 +20,6 @@ class ButtonText {
     this.s = s;
     this.enabled = true;
     fillColor = color(0);
-    fillColorOver = color(200);
   }
 
   // Setters
@@ -32,16 +31,16 @@ class ButtonText {
   // Dibuixa el botó
   void display() {
     pushStyle();
-    fill(255); noStroke();
+    noFill(); noStroke();
     rect(this.x, this.y, this.w, this.h);    // Rectangle del botó
 
     if (mouseOverButton()) {
-      fill(fillColorOver);      // Color quan ratolí a sobre
-    } else {
-      fill(fillColor);          // Color actiu però ratolí fora
-    }
+      fill(fillColor);
+      rect(115, 55, 220, 2);;      // Color quan ratolí a sobre
+    }else{}
     // Text (color, alineació i mida)
-    textSize(this.s); 
+    textSize(this.s);
+    fill(0);
     textAlign(CENTER);
     text(textBoto, this.x + this.w/2, this.y + this.h/2 + 15);
     popStyle();
